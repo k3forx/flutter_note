@@ -12,11 +12,21 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Flutter Note'),
-        ),
-        body: Container(),
-      ),
+          appBar: AppBar(
+            title: const Text('Flutter Note'),
+          ),
+          body: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              children: [
+                const Spacer(),
+                const TextField(),
+                const SizedBox(height: 32),
+                ElevatedButton(onPressed: () {}, child: const Text('Save')),
+                const Spacer(),
+              ],
+            ),
+          )),
     );
   }
 }
