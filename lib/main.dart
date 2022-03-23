@@ -4,10 +4,18 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
+
+  var inputText = '';
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -20,9 +28,17 @@ class MyApp extends StatelessWidget {
             child: Column(
               children: [
                 const Spacer(),
-                const TextField(),
+                TextField(
+                  onChanged: (text) {
+                    setState(() {
+                      inputText = text;
+                    });
+                  },
+                ),
                 const SizedBox(height: 32),
-                ElevatedButton(onPressed: () {}, child: const Text('Save')),
+                ElevatedButton(
+                    onPressed: inputText.isEmpty ? null : () {},
+                    child: const Text('Save')),
                 const Spacer(),
               ],
             ),
